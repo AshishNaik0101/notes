@@ -1,0 +1,172 @@
+What is a project?
+A project organizes all your Google Cloud resources. All data in Cloud Storage belongs inside a project. 
+A project consists of a set of users; 
+a set of APIs; 
+and billing, 
+authentication, and 
+monitoring settings for those APIs.
+So, for example, all of your Cloud Storage buckets and objects, along with user permissions for accessing them, reside in a project. You can have one project, or you can create multiple projects and use them to organize your Google Cloud resources, including your Cloud Storage data, into logical groups. You can have one or multiple projects.
+
+For each project, you use Identity and Access Management (IAM) to grant the ability to manage and work on your project. When you grant an IAM role to a principal, such as a Google Account, that principal obtains certain permissions that allow them to perform actions. When you grant a role at the project level, the access provided by the role applies to every bucket and object within the project. Alternatively, when you grant a role for an individual bucket, the access provided by the role is limited to just that bucket and the objects the bucket contains.
+
+IAM(identity and Access Management)-who , can do what , on what resources.
+allows you to control who has access to the resources in your Google Cloud project. 
+Resources include Cloud Storage buckets and objects stored within buckets, as well as other Google Cloud entities such as Compute Engine instances.
+
+Principals are the "who" of IAM. Principals can be individual users, groups, domains, or even the public as a whole.
+Principals are granted roles, which give them the ability to perform actions in Cloud Storage as well as Google Cloud more generally. 
+Each role is a collection of one or more permissions. Permissions are the basic units of IAM: each permission allows you to perform a certain action.
+
+Permission to access are not directly granted to end user rather, permissions are granted into roles and roles are granted to authenticated members.
+most powerful role in aim gcp - Project IAM Admin 
+
+Access mangemnt has three main parts:
+1. Principle - google account or google workspace account or google indentity domain
+2. Role -  A role is a collection of permissions. Permissions determine what operations are allowed on a resource. When you grant a role to a principal, you grant all the permissions that the role contains.
+3. Policy - The allow policy is a collection of role bindings that bind one or more principals to individual roles. When you want to define who (principal) has what type of access (role) on a resource, you create an allow policy and attach it to the resource.
+
+Permissions determine what operations are allowed on a resource. In the IAM world, permissions are represented in the form of service.resource.verb, for example, pubsub.subscriptions.consume.
+
+Types of Role in GCP: 
+Basic - Owner, editor or viewer - All the resources of GCP
+,prefdefined - gives granual access to spefic resounces. i.e Compute instance admin(can't use big query or )
+and Custom
+Basic roles: Roles historically available in the Google Cloud console. These roles are Owner, Editor, and Viewer..
+
+You can grant roles to users by creating an allow policy, which is a collection of statements that define who has what type of access. An allow policy is attached to a resource and is used to enforce access control whenever that resource is accessed.
+
+The IAM methods are:
+
+setIamPolicy(): Sets allow policies on your resources.
+getIamPolicy(): Gets an allow policy that was previously set.
+testIamPermissions(): Tests whether the caller has the specified permissions for a resource.
+
+With Cloud Scheduler you set up scheduled units of work to be executed at defined times or regular intervals. These work units are commonly known as cron jobs. Typical use cases might include sending out a report email on a daily basis, updating cached data every 10 minutes, or updating summary information once an hour.
+
+Each cron job created using Cloud Scheduler is sent to a target according to a specified schedule, where the work for the task is accomplished. The target must be one of the following types:
+Publicly available HTTP/S endpoints
+Pub/Sub topics
+App Engine HTTP/S applications
+
+Running a python script in GCP
+1. Cloud Scheduler - Cloud Scheduler publishes a PUB/SUB message on a Schedule
+2. PUB/SUB - The message is published to the pub/sub topic
+3. Coud function - Cloud function is triggered and it executes the Python Script.
+
+GCP Scheduler - 
+1. Scheduling Flexibility: Google Cloud Scheduler allows you to define job schedules using the cron syntax, which offers great flexibility in specifying when jobs should run. You can set precise schedules, such as daily, weekly, or on specific dates and times.
+2. Integrate with GCP services - Cloud Scheduler seamlessly integrates with various GCP services, making it easy to trigger actions within your cloud infrastructure. For example, you can use it to start and stop Compute Engine instances, trigger Cloud Functions, initiate Pub/Sub messages, and more.
+3. HTTP/S - You can use Cloud Scheduler to send HTTP/HTTPS requests to external endpoints, enabling you to interact with external services or trigger actions on other platforms.(facebook, twitter, email)
+4. IAM Permissions: It supports Identity and Access Management (IAM) permissions, allowing you to control who can create, delete, or manage scheduled jobs.
+5. Logging and Monitoring: Google Cloud Scheduler offers logging and monitoring capabilities through Cloud Monitoring and Cloud Logging, helping you track the execution status of your scheduled jobs and troubleshoot any issues.
+
+A cron job is a scheduled task or automated script that runs at specified intervals on a Unix-like operating system. The name "cron" comes from the Greek word "chronos," which means time, and it is used to automate repetitive tasks or processes without manual intervention. These tasks can include system maintenance, data backups, log rotation, and other administrative and scripting tasks.
+
+What is a GCP Project, and why is it important?
+Answer: A GCP project is a fundamental organizational unit in Google Cloud. It acts as a container for resources, services, and billing. 
+Projects help isolate and manage resources, 
+define access controls, 
+and enable cost tracking and billing for GCP services.
+They play a crucial role in organizing and securing your cloud infrastructure.
+
+What is the purpose of the if __name__ == "__main__": statement in a Python script?
+This statement is used to check if a Python script is being run as the main program (not imported as a module). It's often used to define code that should run only when the script is executed directly.
+
+What is a generator in Python, and how is it different from a list?
+A generator is an iterable that generates values on-the-fly, saving memory compared to lists. It uses the yield keyword to produce values one at a time, whereas lists store all values in memory.
+
+The OSI (Open Systems Interconnection) model is a conceptual framework for understanding network communication. It consists of seven layers:
+Physical Layer: Deals with the physical medium of communication, such as cables and hardware.
+Data Link Layer: Manages the data link between devices on the same network.
+Network Layer: Handles routing and forwarding of data packets across different networks.
+Transport Layer: Ensures end-to-end communication, error detection, and data segmentation.
+Session Layer: Manages sessions or connections between applications.
+Presentation Layer: Handles data translation, encryption, and compression.
+Application Layer: Provides network services directly to applications and end-users.
+
+What is an IP address, and how is it different from a MAC address?
+An IP (Internet Protocol) address is a numerical label assigned to each device on a network to identify and locate it.
+IP addresses are used for routing data across networks.
+MAC (Media Access Control) address, on the other hand, is a unique hardware address assigned to network interfaces(NIC card) by manufacturers. MAC addresses are used for local network communication.
+
+Explain the difference between TCP and UDP. When would you use one over the other?
+TCP (Transmission Control Protocol) is a connection-oriented protocol that ensures reliable and ordered delivery of data.
+UDP (User Datagram Protocol) is connectionless and provides faster, but unreliable, data transmission. Use TCP when reliability is crucial (e.g., web browsing), and use UDP when low overhead and speed are more important (e.g., real-time video streaming, online gaming).
+
+What is DNS, and how does it work?
+DNS (Domain Name System) is a system that translates human-readable domain names (like www.example.com) into IP addresses that computers can understand. It works through a hierarchy of DNS servers, including authoritative, recursive, and root servers, to resolve domain names to IP addresses.
+
+Describe what a subnet mask is and its role in IP addressing.
+A subnet mask is a 32-bit number that divides an IP address into a network portion and a host portion. It helps routers determine whether an IP address is on the same local network or needs to be routed to another network. Subnet masks are used in CIDR notation to specify network address ranges.
+
+What is NAT (Network Address Translation), and why is it used in networking?
+NAT is a technique that allows multiple devices on a local network to share a single public IP address when communicating with the internet. It is used to conserve public IP addresses, enhance network security, and manage traffic flow.
+
+Describe the differences between IPv4 and IPv6. Why is IPv6 important?
+IPv4(network layer protocol) is the older Internet Protocol version, with 32-bit addresses, leading to address exhaustion. IPv6 is the newer version with 128-bit addresses, providing a virtually unlimited pool of addresses. IPv6 is important because it addresses the shortage of IPv4 addresses and supports the growth of the Internet of Things (IoT).
+
+Subnetting: To allow for efficient use of IP addresses and to support variable network sizes, subnetting was introduced. Subnetting involves dividing a large network into smaller subnetworks, each with its subnet mask.
+
+Private IP Addresses: A range of IP addresses is reserved for private use within local networks. These addresses include the commonly used 192.168.x.x, 10.x.x.x, and 172.16.x.x to 172.31.x.x ranges. Devices on private networks use Network Address Translation (NAT) to communicate with the internet using a single public IP address.
+
+Public IP Addresses: Public IP addresses are globally routable and are used to identify devices on the public internet. These addresses are assigned by Internet Service Providers (ISPs) and are unique across the entire internet.
+
+MAC (Midea Access Control Address) : The length of the MAC address is: 12-nibble/ 6 bytes/ 48 bits Type “ipconfig/all” in the command prompt and press ‘Enter’, this gives us the MAC address. 
+
+DNS Server: DNS stands for Domain Name System. DNS is basically a server that translates web addresses or URLs (ex: www.google.com) into their corresponding IP addresses. We don’t have to remember all the IP addresses of each and every website. The command ‘nslookup’ gives you the IP address of the domain you are looking for. This also provides information on our DNS Server. nslookup www.google.com
+
+The OSI (Open Systems Interconnection) model is a conceptual framework that defines how computers communicate with each other over a network.
+
+Hardware layer in OSI - Physical, Datalink, Network
+Software Laer in OSI - Application, Session, Presentation
+Heart of OSI - 
+
+The full form of HTTPS is a Hypertext transfer protocol secure. It is an advanced version of the HTTP protocol. Its port number is 443 by default. It uses SSL/TLS protocol for providing security.
+
+At the Data link layer trailer is added and at the OSI model layer 6,5,4,3 added header.
+In the OSI model, as a data packet moves from the lower to upper layers, headers get removed.
+In the OSI model, as a data packet moves from the upper to lower layers, headers are added. This header contains useful information.
+
+protol and port number of dns - tcp/udp 53
+TCP (Transmission Control Protocol) is one of the main protocols of the Internet protocol suite.
+It lies between the Application and Network Layers which are used in providing reliable delivery services. 
+It is a connection-oriented protocol for communications that helps in the exchange of messages between different devices over a network. 
+The Internet Protocol (IP), which establishes the technique for sending data packets between computers, works with TCP.
+To make sure that each message reaches its target location intact, the TCP/IP model breaks down the data into small bundles and afterward reassembles the bundles into the original message on the opposite end. Sending the information in little bundles of information makes it simpler to maintain efficiency as opposed to sending everything in one go. 
+After a particular message is broken down into bundles, these bundles may travel along multiple routes if one route is jammed but the destination remains the same.
+
+User Datagram Protocol (UDP) is a Transport Layer protocol. UDP is a part of the Internet Protocol suite, referred to as UDP/IP suite. Unlike TCP, it is an unreliable and connectionless protocol. So, there is no need to establish a connection prior to data transfer. The UDP helps to establish low-latency and loss-tolerating connections establish over the network.The UDP enables process to process communication.
+Disadvantages of UDP:
+1. No reliability: UDP does not guarantee delivery of packets or order of delivery, which can lead to missing or duplicate data.
+2. No congestion control: UDP does not have congestion control, which means that it can send packets at a rate that can cause network congestion.
+3. No flow control: UDP does not have flow control, which means that it can overwhelm the receiver with packets that it cannot handle.
+4. Vulnerable to attacks: UDP is vulnerable to denial-of-service attacks, where an attacker can flood a network with UDP packets, overwhelming the network and causing it to crash.
+5. Limited use cases: UDP is not suitable for applications that require reliable data delivery, such as email or file transfers, and is better suited for applications that can tolerate some data loss, such as video streaming or online gaming.
+
+The TCP (Transmission Control Protocol) three-way handshake is a fundamental process that establishes a reliable connection between two devices or systems in a network. It is used to initialize and synchronize the sequence numbers and other parameters required for data transmission. Here's a step-by-step explanation of the TCP three-way handshake:
+Step 1: SYN (Synchronize) - The process begins when one device, often referred to as the client, wishes to initiate a connection with another device, the server.
+Step 2: SYN-ACK (Synchronize-Acknowledge) - Upon receiving the SYN segment from the server, the client processes it and sends back a response.
+Step 3: ACK (Acknowledgment) - Finally, the client sends an ACK (Acknowledgment) segment to acknowledge the server's ISN.
+
+The three-way handshake ensures that both the client and server agree on initial sequence numbers (ISNs) and that each side is aware of the other's intent to establish a connection. This synchronization and agreement on sequence numbers are essential for reliable data transmission, error detection, and data ordering in TCP communication. Once the three-way handshake is completed, the TCP connection is established and ready to transmit data.
+
+IPv6 uses a 128-bit addressing scheme, compared to IPv4's 32-bit addressing. This significantly expands the pool of available IP addresses, providing approximately 340 undecillion (3.4 x 10^38) unique addresses. This ample address space can accommodate the growing number of internet-connected devices.
+
+Round Trip Time (RTT) is a network performance metric that measures the time it takes for a packet of data to travel from a source to a destination and back again. It is often used to evaluate the responsiveness and latency of a network or a specific network connection.
+
+RTT is typically measured in milliseconds (ms) and represents the time it takes for a packet (or a series of packets) to travel from the sender (source) to the receiver (destination) and then back from the receiver to the sender.
+
+RTT consists of two main components:
+Propagation Delay: This is the time it takes for a signal or packet to travel through the physical medium, such as a cable or a fiber-optic line. It is influenced by the distance between the sender and receiver.
+Processing Delay: This includes the time spent in routers, switches, and other network devices as they process the packet. It also includes any queuing delays in these devices.
+
+TTL stands for "Time to Live," and it is a field in the header of IP (Internet Protocol) packets used in computer networking. The TTL field serves a crucial role in determining the lifespan or time limit of a packet as it travels through a network.
+TTL is an 8-bit field in the IP header. It represents the number of hops or routers a packet can pass through before it is discarded or "dies" on the network. Each router or network device that processes the packet decrements the TTL value by one.
+As a packet travels through a network, each router it encounters decrements the TTL value by one. When the TTL reaches zero, the router that decrements it to zero discards the packet and sends an ICMP (Internet Control Message Protocol) "Time Exceeded" message back to the source indicating that the packet was dropped due to TTL expiration.
+
+netstat -a or netstat --all: Shows all active network connections, including listening and established connections.
+netstat -tuln or netstat --tcp --udp --listening --numeric: Lists all TCP and UDP listening ports with numeric addresses.
+
+Localhost" is a common term used in computer networking and refers to the loopback network interface of a device. It is often associated with the IP address 127.0.0.1 in IPv4 or the equivalent ::1 in IPv6. Localhost is used to establish network connections with the device itself, allowing processes and services on the same device to communicate over the network stack.
+
+Loopback Interface: The loopback interface is a virtual network interface that exists on every network-capable device. It facilitates communication between a device's own processes without using physical network hardware
